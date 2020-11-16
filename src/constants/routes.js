@@ -1,0 +1,10 @@
+export const HOME = '/';
+export const ABOUT = '/about';
+export const PORT = '/port';
+export const CONTACT = '/contacts';
+export const Netflix = '/Netflix';
+export const Ft = '/Ft';
+export const Travel = '/Travel';
+export const Ig = '/Ig';
+export const Speed = '/Speed';
+export const Movie = '/MovieSearch';
