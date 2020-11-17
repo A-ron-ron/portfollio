@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import { Link as ReachRouterLink } from 'react-router-dom';
-import { AboutL, PortL, ContactL, Logo, Inner, Item, Container, Pane, Link } from './styles/nav';
+import { PortL, ContactL, Logo, Inner, Item, Container, Pane, Link } from './styles/nav';
 import { Context } from '../../context'
 
 

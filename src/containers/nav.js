@@ -1,12 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import * as ROUTES from '../constants/routes';
 import { Nav } from '../components';
-import { Link } from "react-router-dom"
 import { Context } from '../context'
 
 export function NavContainer() {
 
-  const {theme, setTheme, useTheme, themeCreator} = useContext(Context)
+  const {theme, setTheme, useTheme, themeCreator, fadeIn, setFadeIn} = useContext(Context)
+
+  function fadeChange(e){
+    setFadeIn(!fadeIn)
+  }
 
   function themeSetter(e) {
       const {value} = e.target
@@ -22,7 +25,7 @@ export function NavContainer() {
     return (
         <Nav.Container>
 
-                    <Nav.Link to={ROUTES.HOME}><Nav.Logo to={ROUTES.PORT} src={process.env.PUBLIC_URL + "content/croppedWide.gif"} alt="Logo wide cropped" /></ Nav.Link>
+                    <Nav.Link to={ROUTES.HOME} onChange={fadeChange}><Nav.Logo to={ROUTES.PORT} src={process.env.PUBLIC_URL + "content/croppedWide.gif"} alt="Logo wide cropped" /></ Nav.Link>
 
                     <select
                         value={theme}
@@ -37,8 +40,8 @@ export function NavContainer() {
                             <option value="teal">Teal</option>
                     </select>
                     <Nav.Pane>
-                        <Nav.Link to={ROUTES.PORT}> <Nav.PortL>Showcase</Nav.PortL></ Nav.Link>
-                        <Nav.Link to={ROUTES.CONTACT}> <Nav.ContactL to="#contact" >Contact</Nav.ContactL> </Nav.Link>
+                        <Nav.Link to={ROUTES.PORT} onChange={fadeChange}> <Nav.PortL>Showcase</Nav.PortL></ Nav.Link>
+                        <Nav.Link to={ROUTES.CONTACT} onChange={fadeChange}> <Nav.ContactL to="#contact" >Contact</Nav.ContactL> </Nav.Link>
                     </Nav.Pane>
         </Nav.Container>
     )

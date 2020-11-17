@@ -56,7 +56,7 @@ DelayLink.propTypes = {
 
 DelayLink.defaultProps = {
   replace: false,
-  delay: 3000,
+  delay: 700,
   onDelayStart: () => {},
   onDelayEnd: () => {}
 };

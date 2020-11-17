@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Contact } from '../components';
+import { CSSTransition } from "react-transition-group";
 
 export function ContactContainer() {
 
   const [emailAddress, setEmailAddress] = useState('');
   const [querry, setQuerry] = useState('');
+  const [fadeIn, setFadeIn] = useState(false)
+
+  useEffect((fadeIn) => {
+    setFadeIn(!fadeIn)
+  }, [])
 
     return (
+      <CSSTransition
+        in={fadeIn}
+        classNames={'fade'}
+        timeout={600}
+      >
         <Contact.Container>
             <Contact.Base onSubmit="" method="POST" data-netlify="true">
             <Contact.Title>Get in touch</Contact.Title>
@@ -28,5 +39,6 @@ export function ContactContainer() {
                 </Contact.Submit>
             </Contact.Base>
         </Contact.Container>
+    </CSSTransition>
     )
 }

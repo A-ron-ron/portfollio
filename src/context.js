@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react"
-import { NavContainer } from './containers/nav'
+import React, { useState } from "react"
 
 const Context = React.createContext()
 
@@ -11,13 +10,6 @@ function ContextProvider({children}) {
     thigh: `#E8E8E8`,
     ttheme: `#A66F3F`,}
   )
-
-  console.log(useTheme)
-
-  function themeSetter(value){
-    setTheme(value)
-    themeCreator(value)
-  }
 
   function themeCreator (value) {
     if (value === "black"){

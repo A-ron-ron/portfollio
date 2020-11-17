@@ -1,10 +1,6 @@
 import React from 'react';
 import { NavContainer } from '../containers/nav';
 import { PortfolioContainer } from '../containers/portfolio';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import styled, { keyframes } from 'styled-components';
 
 export default function Port() {

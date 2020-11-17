@@ -1,10 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { GlobalStyles } from './global-styles';
-import { ThemeProvider } from "styled-components";
-import { ContextProvider, Context } from "./context"
+import { ContextProvider } from "./context"
 import Theme from './theme'
 
 

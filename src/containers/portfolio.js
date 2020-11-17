@@ -1,23 +1,22 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { Portfolio } from '../components';
-import {Link} from "react-router-dom"
 import * as ROUTES from '../constants/routes';
 import DelayLink from '../hooks/linkDelay';
-import styled, { css } from 'styled-components';
+import { CSSTransition } from "react-transition-group";
 
 export function PortfolioContainer() {
 
-  const [expanded, setExpanded] = useState(false)
+  const [fadeIn, setFadeIn] = useState(false)
 
-function handleClick(){
-  setExpanded(!expanded)
-}
+  useEffect((fadeIn) => {
+    setFadeIn(!fadeIn)
+  }, [])
 
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
       function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
+        setSize([window.innerWidth]);
       }
       window.addEventListener('resize', updateSize);
       updateSize();
@@ -29,7 +28,7 @@ function handleClick(){
 let picSize
 
 function PicSizeFun(){
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
   if(width > 1100){
     picSize = "D"
   } else picSize = "M"
@@ -38,6 +37,11 @@ PicSizeFun()
 
 
     return (
+      <CSSTransition
+        in={fadeIn}
+        classNames={'fade'}
+        timeout={600}
+      >
         <Portfolio.Container>
                 <Portfolio>
                     <Portfolio.Pane>
@@ -46,7 +50,7 @@ PicSizeFun()
                         Either make your own log in account or use: Email: Admin1@admin.com Password: Password</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Netflix}><Portfolio.Img src={process.env.PUBLIC_URL + `content/netclone${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Netflix}><Portfolio.Img src={process.env.PUBLIC_URL + `content/netclone${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
                 <Portfolio>
@@ -55,7 +59,7 @@ PicSizeFun()
                         <Portfolio.Text>This is an e-commerce site I built in React to sell photos I have taken.</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Ft}><Portfolio.Img src={process.env.PUBLIC_URL + `content/ft${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Ft}><Portfolio.Img src={process.env.PUBLIC_URL + `content/ft${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
                 <Portfolio>
@@ -64,7 +68,7 @@ PicSizeFun()
                         <Portfolio.Text>A form for selecting a weekend away holiday, the idea being that the page instantly responds to the forms input.</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Travel}><Portfolio.Img src={process.env.PUBLIC_URL + `content/travelators${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Travel}><Portfolio.Img src={process.env.PUBLIC_URL + `content/travelators${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
                 <Portfolio>
@@ -73,7 +77,7 @@ PicSizeFun()
                         <Portfolio.Text>Orriginally built as a background for a gambling site this is built using HTML Canvas, the shapes bounce off each other using programmed physics and explode into coins when clicked.</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Ig}><Portfolio.Img src={process.env.PUBLIC_URL + `content/ibg${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Ig}><Portfolio.Img src={process.env.PUBLIC_URL + `content/ibg${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
                 <Portfolio>
@@ -82,7 +86,7 @@ PicSizeFun()
                         <Portfolio.Text>How fast can you type? Find out if you've got what it takes!</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Speed}><Portfolio.Img src={process.env.PUBLIC_URL + `content/speed${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Speed}><Portfolio.Img src={process.env.PUBLIC_URL + `content/speed${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
                 <Portfolio>
@@ -91,9 +95,10 @@ PicSizeFun()
                         <Portfolio.Text>A simple React application for searching for movies, using an API call.</Portfolio.Text>
                     </Portfolio.Pane>
                     <Portfolio.Pane>
-                        <DelayLink to={ROUTES.Movie}><Portfolio.Img src={process.env.PUBLIC_URL + `content/movieSearch${picSize}.jpg`} alt="" expanded={ expanded } onClick={handleClick} /></ DelayLink>
+                        <DelayLink to={ROUTES.Movie}><Portfolio.Img src={process.env.PUBLIC_URL + `content/movieSearch${picSize}.jpg`} alt=""  /></ DelayLink>
                     </Portfolio.Pane>
                 </Portfolio>
         </Portfolio.Container>
+      </CSSTransition>
     )
 }

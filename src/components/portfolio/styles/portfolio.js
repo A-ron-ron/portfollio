@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components';
 
+export const Item = styled.div`
+    display: flex;
+    border-bottom: 8px solid #222;
+    padding: 50px 5%;
+    overflow: hidden;
+    padding-bottom: 2em;
+`;
 
 export const Inner = styled.div`
     display: flex;
@@ -28,19 +35,34 @@ export const Pane = styled.div`
 
 export const Container = styled.section`
 
+
+    &.fade-enter {
+        opacity: 0;
+    }
+    &.fade-enter.fade-enter-active {
+        opacity: .5;
+        transition: opacity 600ms ease-in;
+    }
+    &.fade-enter-done{
+      opacity: 1;
+    }
+    &.fade-exit {
+        opacity: 1;
+    }
+
+    &.fade-exit.fade-exit-active {
+        opacity: 0.5;
+        transition: opacity 600ms ease-in;
+    }
+    &.fade-exit-done{
+      opacity 0;
+    }
+
     @media (max-width: 1000px) {
         ${Item}:last-of-type h2 {
             margin-bottom: 50px;
         }
     }
-`;
-
-export const Item = styled.div`
-    display: flex;
-    border-bottom: 8px solid #222;
-    padding: 50px 5%;
-    overflow: hidden;
-    padding-bottom: 2em;
 `;
 
 export const Title = styled.h1`
@@ -65,15 +87,6 @@ export const Img = styled.img`
     @media (min-width: 1000px) {
         max-width: 90%;
     }
-
-    ${ props => props.expanded && css`
-  max-width: 100vw;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-`};
 
 `;
 

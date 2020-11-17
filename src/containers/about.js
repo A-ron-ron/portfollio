@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { About } from '../components';
+import { CSSTransition } from "react-transition-group";
 
 export function AboutContainer() {
+  const [fadeIn, setFadeIn] = useState(false)
+
+  useEffect((fadeIn) => {
+    setFadeIn(!fadeIn)
+  }, [])
+
     return (
+      <CSSTransition
+        in={fadeIn}
+        classNames={'fade'}
+        timeout={600}
+      >
         <About.Container>
                         <About.Img src={process.env.PUBLIC_URL + "content/bwcity.jpg"} alt="b&W city picture" />
                         <About.Title>Arron Hogg Web Development</About.Title>
@@ -15,5 +27,6 @@ export function AboutContainer() {
                           I take great care to ensure these unique experiences are intuitive to navigate and not cluttered,
                         providing a relaxing experience accessible to all, thus putting your customers at ease and allowing your business to grow.</About.Text>
         </About.Container>
+    </CSSTransition>
     )
 }

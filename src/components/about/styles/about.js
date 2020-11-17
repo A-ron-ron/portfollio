@@ -28,12 +28,39 @@ export const Container = styled.section`
   "Text Text Text"
   ". . .";
 
+
+      &.fade-enter {
+          opacity: 0;
+      }
+      &.fade-enter.fade-enter-active {
+          opacity: .5;
+          transition: opacity 600ms ease-in;
+      }
+      &.fade-enter-done{
+        opacity: 1;
+      }
+      &.fade-exit {
+          opacity: 1;
+      }
+
+      &.fade-exit.fade-exit-active {
+          opacity: 0.5;
+          transition: opacity 600ms ease-in;
+      }
+      &.fade-exit-done{
+        opacity 0;
+      }
+
   @media (min-width: 700px) {
-    grid-template-rows: 5% 15% 3% 10% 57% 15%
+    grid-template-rows: 5% 15% 3% 10% 57% 15%;1
   }
 
   @media (min-width: 1000px) {
-    grid-template-rows: 5% 20% 3% 5% 57% 15%
+    grid-template-rows: 5% 25% 3% 5% 57% 10%;
+  }
+
+  @media (max-width: 1000px) and (orientation: landscape) {
+    grid-template-rows: 5% 35% 3% 5% 52% 5%;
   }
 
   @media (min-width: 1600px) {
@@ -64,6 +91,10 @@ export const Title = styled.h2`
     }
 
     @media (min-width: 1000px) {
+        font-size: 2.3rem;
+    }
+
+    @media (min-width: 1400px) {
         font-size: 2.5rem;
     }
 
@@ -99,7 +130,7 @@ export const Text = styled.h3`
     }
 
     @media (min-width: 1000px) {
-        font-size: 1.9rem;
+        font-size: 1.7rem;
     }
 
     @media (min-width: 1600px) {

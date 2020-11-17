@@ -1,23 +1,15 @@
-import React, { component } from 'react';
+import React from 'react';
 import Home from './pages/home';
 import Port from './pages/port';
 import Contact from './pages/contact';
 import * as ROUTES from './constants/routes';
-import styled, { keyframes } from "styled-components";
-import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
-function App({location}) {
+function App() {
   return (
     <Router>
-            <Wrapper>
-              <TransitionGroup component={null}>
-                <CSSTransition
-                  classNames={'fade'}
-                  timeout={{enter: 500, exit: 300}}
-                >
-                   <Switch location={location}>
+                   <Switch>
                         <Route exact path={ROUTES.HOME}>
                             <Home />
                         </Route>
@@ -52,41 +44,9 @@ function App({location}) {
                           return null;
                         }} />
                         </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-            </ Wrapper>
     </Router>
   );
 }
-
-const Wrapper = styled.div`
-    .fade-enter {
-        opacity: 0.01;
-    }
-    .fade-enter.fade-enter-active {
-        opacity: 1;
-        transition: opacity 300ms ease-in;
-    }
-    .fade-exit {
-        opacity: 1;
-    }
-
-    .fade-exit.fade-exit-active {
-        opacity: 0.01;
-        transition: opacity 300ms ease-in;
-    }
-
-    div.transition-group {
-     position: relative;
-    }
-
-    section.route-section {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
-`;
 
 
 export default App;

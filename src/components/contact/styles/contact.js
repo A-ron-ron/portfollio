@@ -9,6 +9,29 @@ export const Container = styled.section`
     box-sizing: border-box;
     width: 100%;
     margin: auto;
+
+    &.fade-enter {
+        opacity: 0;
+    }
+    &.fade-enter.fade-enter-active {
+        opacity: .5;
+        transition: opacity 600ms ease-in;
+    }
+    &.fade-enter-done{
+      opacity: 1;
+    }
+    &.fade-exit {
+        opacity: 1;
+    }
+
+    &.fade-exit.fade-exit-active {
+        opacity: 0.5;
+        transition: opacity 600ms ease-in;
+    }
+    &.fade-exit-done{
+      opacity 0;
+    }
+
 `;
 
 export const Error = styled.div`

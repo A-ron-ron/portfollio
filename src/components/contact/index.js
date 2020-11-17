@@ -14,7 +14,7 @@ export default function Contact({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;
 }
 
-Contact.Container = function LogoContainer({ children, ...restProps }) {
+Contact.Container = function ContactContainer({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;
 }
 
